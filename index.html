@@ -1,0 +1,264 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=DM+Sans:wght@400;500&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #6B3FA0;
+    --purple-dark: #4e2c7a;
+    --purple-light: #8B5FC0;
+    --lime: #AACC00;
+    --lime-dark: #88A300;
+    --dark: #111111;
+    --dark2: #1c1c1c;
+    --dark3: #272727;
+    --mid: #888;
+    --light: #f5f5f2;
+    --white: #fff;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: #fff; color: var(--dark); }
+
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 40px; background: var(--dark); position: sticky; top: 0; z-index: 10;
+    border-bottom: 2px solid var(--lime);
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; }
+  .logo-img { height: 52px; width: auto; }
+  nav ul { list-style: none; display: flex; gap: 28px; }
+  nav ul li a { font-size: 14px; font-weight: 500; color: #ccc; text-decoration: none; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--lime); }
+  .btn { background: var(--lime); color: var(--dark); border: none; padding: 10px 22px; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn:hover { background: var(--lime-dark); }
+  .btn-purple { background: var(--purple); color: #fff; }
+  .btn-purple:hover { background: var(--purple-dark); }
+
+  .hero { background: var(--dark); color: #fff; padding: 80px 40px 70px; display: flex; align-items: center; justify-content: space-between; gap: 40px; min-height: 440px; }
+  .hero-left { flex: 1; max-width: 580px; }
+  .badge { background: var(--purple); color: #fff; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 4px; display: inline-block; margin-bottom: 20px; letter-spacing: 0.5px; }
+  .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 66px; font-weight: 800; line-height: 1.0; margin-bottom: 20px; font-style: italic; }
+  .hero h1 .lime { color: var(--lime); }
+  .hero h1 .purple { color: var(--purple-light); }
+  .hero p { font-size: 16px; color: #aaa; line-height: 1.7; margin-bottom: 30px; max-width: 460px; }
+  .hero-ctas { display: flex; gap: 14px; align-items: center; margin-bottom: 36px; flex-wrap: wrap; }
+  .hero-stats { display: flex; gap: 40px; border-top: 0.5px solid #333; padding-top: 28px; flex-wrap: wrap; }
+  .stat-val { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 800; color: var(--lime); }
+  .stat-lbl { font-size: 12px; color: #666; margin-top: 2px; }
+  .hero-logo { flex-shrink: 0; }
+  .hero-logo img { width: 280px; max-width: 100%; filter: drop-shadow(0 0 30px rgba(170,204,0,0.15)); }
+
+  .trust-bar { background: var(--purple); padding: 16px 40px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; justify-content: center; }
+  .trust-item { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 14px; font-weight: 500; }
+  .t-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+
+  section { padding: 70px 40px; }
+  .section-label { font-size: 12px; font-weight: 500; color: var(--purple); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 42px; font-weight: 800; line-height: 1.1; color: var(--dark); margin-bottom: 14px; font-style: italic; }
+  .section-title .lime { color: var(--lime-dark); }
+  .section-sub { font-size: 16px; color: var(--mid); line-height: 1.7; max-width: 520px; margin-bottom: 44px; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .service-card { background: #fff; border-radius: 10px; padding: 28px 24px; border: 1.5px solid #e5e5e5; transition: border-color 0.2s, box-shadow 0.2s; }
+  .service-card:hover { border-color: var(--lime); }
+  .svc-dot { width: 40px; height: 40px; border-radius: 8px; background: #f0f9c0; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .service-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+  .service-card p { font-size: 14px; color: var(--mid); line-height: 1.6; }
+
+  .why-section { background: var(--dark); color: #fff; }
+  .why-section .section-label { color: var(--lime); }
+  .why-section .section-title { color: #fff; }
+  .why-section .section-sub { color: #888; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .why-card { background: var(--dark2); border-radius: 10px; padding: 28px 24px; border: 0.5px solid #333; }
+  .why-num { font-family: 'Barlow Condensed', sans-serif; font-size: 44px; font-weight: 800; color: var(--lime); line-height: 1; margin-bottom: 12px; }
+  .why-card h3 { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 8px; }
+  .why-card p { font-size: 14px; color: #666; line-height: 1.6; }
+
+  .contact-section { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+  .contact-items { display: flex; flex-direction: column; gap: 22px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-item-icon { width: 44px; height: 44px; border-radius: 8px; background: var(--purple); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-item h4 { font-size: 13px; font-weight: 500; color: #888; margin-bottom: 3px; }
+  .contact-item p { font-size: 15px; font-weight: 500; color: var(--dark); }
+  .call-big { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 800; color: var(--purple); margin: 6px 0 2px; }
+  .book-card { background: var(--dark); border-radius: 12px; padding: 36px; color: #fff; border: 1.5px solid var(--lime); }
+  .book-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 800; margin-bottom: 8px; font-style: italic; color: var(--lime); }
+  .book-card p { font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 24px; }
+  .book-btn { background: var(--lime); color: var(--dark); border: none; width: 100%; padding: 14px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+  .book-btn:hover { background: var(--lime-dark); }
+
+  footer { background: var(--dark); color: #666; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 13px; border-top: 2px solid var(--purple); }
+  .footer-logo img { height: 44px; }
+  .tagline { color: var(--lime); font-weight: 500; font-style: italic; }
+</style>
+
+<nav>
+  <div class="logo-wrap">
+    <img class="logo-img" src="/mnt/user-data/uploads/Gain_Wheels.png" alt="Gain Wheels and Tyres" onerror="this.style.display='none'"/>
+  </div>
+  <ul>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Coverage</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <a class="btn" href="tel:0493313080">📞 Call Now</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="badge">24/7 Mobile Tyre Service — Greater Brisbane</div>
+    <h1>WE COME<br>TO <span class="lime">YOU.</span><br><span class="purple">ANYTIME.</span></h1>
+    <p>Flat tyre? Dead battery? Need a replacement? Our mobile tyre experts are on call around the clock — wherever you are in Greater Brisbane.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="tel:0493313080">📞 0493 313 080</a>
+      <a class="btn btn-purple" href="mailto:gainwheelsandtyres@gmail.com">Book Now</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-val">24/7</div><div class="stat-lbl">Always available</div></div>
+      <div><div class="stat-val">100%</div><div class="stat-lbl">Price match guarantee</div></div>
+      <div><div class="stat-val">GBR</div><div class="stat-lbl">Greater Brisbane</div></div>
+    </div>
+  </div>
+  <div class="hero-logo">
+    <img src="/mnt/user-data/uploads/Gain_Wheels.png" alt="Gain Wheels and Tyres Logo"/>
+  </div>
+</div>
+
+<div class="trust-bar">
+  <div class="trust-item"><div class="t-dot"></div> All vehicle types</div>
+  <div class="trust-item"><div class="t-dot"></div> New batteries available</div>
+  <div class="trust-item"><div class="t-dot"></div> 24/7 service</div>
+  <div class="trust-item"><div class="t-dot"></div> Price Match Guarantee</div>
+  <div class="trust-item"><div class="t-dot"></div> Greater Brisbane</div>
+</div>
+
+<section>
+  <div class="section-label">What we do</div>
+  <div class="section-title">FULL MOBILE TYRE &<br><span class="lime">BATTERY SERVICE</span></div>
+  <div class="section-sub">We bring the workshop to you. No tow trucks, no waiting — our mobile technicians handle everything on the spot.</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="svc-dot">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6B3FA0" stroke-width="2"/><circle cx="10" cy="10" r="3.5" stroke="#AACC00" stroke-width="2"/></svg>
+      </div>
+      <h3>Tyre Sales</h3>
+      <p>Passenger cars, SUVs, 4WDs, trucks, and trailers. Tyres for every vehicle type.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-dot">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="7" width="14" height="6" rx="2.5" stroke="#6B3FA0" stroke-width="2"/><line x1="10" y1="3" x2="10" y2="7" stroke="#AACC00" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <h3>New Batteries</h3>
+      <p>Dead battery? We supply and fit new car batteries on the spot, fast.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-dot">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6B3FA0" stroke-width="2" stroke-dasharray="3 2"/><circle cx="10" cy="10" r="3" fill="#AACC00"/></svg>
+      </div>
+      <h3>4WD & Off-Road</h3>
+      <p>Specialist tyres for 4WDs and off-road vehicles built tough for Brisbane.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-dot">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#6B3FA0" stroke-width="2"/><path d="M7 10L9 12L13 8" stroke="#AACC00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Puncture Repairs</h3>
+      <p>Quick on-site puncture repairs to get you moving without any delay.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-dot">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="5" width="12" height="10" rx="2" stroke="#6B3FA0" stroke-width="2"/><line x1="7" y1="9" x2="13" y2="9" stroke="#AACC00" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Truck & Trailer</h3>
+      <p>Commercial tyre supply and fitting for trucks, vans, and trailers.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-dot">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 16L10 5L15 16Z" stroke="#6B3FA0" stroke-width="2" stroke-linejoin="round" fill="none"/><line x1="10" y1="11" x2="10" y2="13" stroke="#AACC00" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Roadside Assistance</h3>
+      <p>Stranded? We'll be there fast, any time, anywhere in Greater Brisbane.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why-section">
+  <div class="section-label">Why choose us</div>
+  <div class="section-title" style="color:#fff; font-style:italic;">BUILT ON TRUST.<br><span style="color:var(--lime)">DRIVEN BY SPEED.</span></div>
+  <div class="section-sub">We're not a big chain — we're your local Brisbane tyre team, and we show up every time.</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h3>Mobile & convenient</h3>
+      <p>We come to your home, office, or roadside. No towing, no delays.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h3>Price Match Guarantee</h3>
+      <p>Found a better price? We'll match it. Quality service, no premium markup.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h3>24/7 availability</h3>
+      <p>Tyres don't wait for business hours. Neither do we — call any time, any day.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <h3>All vehicles welcome</h3>
+      <p>Cars, SUVs, 4WDs, trucks, trailers — if it rolls, we've got the tyre.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="section-label">Get in touch</div>
+  <div class="section-title">READY TO ROLL?<br><span class="lime">LET'S TALK.</span></div>
+  <div class="contact-grid">
+    <div class="contact-items">
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 3.5C3 3.5 5 2 7 4.5C8 6 7.5 7.5 7.5 7.5C7.5 7.5 9.5 11.5 12.5 12.5C12.5 12.5 14 12 15.5 13C18 15 16.5 17 16.5 17C16.5 17 14 18.5 10 15C6 11.5 3 3.5 3 3.5Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h4>Phone — available 24/7</h4>
+          <div class="call-big">0493 313 080</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#fff" stroke-width="1.5"/><path d="M2 7L10 12L18 7" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <h4>Email</h4>
+          <p>gainwheelsandtyres@gmail.com</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.2 2 5 4.2 5 7C5 11 10 18 10 18C10 18 15 11 15 7C15 4.2 12.8 2 10 2Z" stroke="#fff" stroke-width="1.5"/><circle cx="10" cy="7" r="2" stroke="#fff" stroke-width="1.5"/></svg>
+        </div>
+        <div>
+          <h4>Service area</h4>
+          <p>Greater Brisbane, QLD</p>
+        </div>
+      </div>
+    </div>
+    <div class="book-card">
+      <h3>Book a service</h3>
+      <p>Tell us where you are and what you need — we'll come to you fast. Available any time, day or night.</p>
+      <button class="book-btn" onclick="sendPrompt('I want to book a tyre service with Gain Wheels and Tyres')">Book Now ↗</button>
+      <div style="margin-top:20px; padding-top:16px; border-top:0.5px solid #333; font-size:13px; color:#666;">
+        Or call us directly at <strong style="color:var(--lime)">0493 313 080</strong> — we answer 24/7.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="/mnt/user-data/uploads/Gain_Wheels.png" alt="Gain Wheels and Tyres"/>
+  </div>
+  <div>© 2026 Gain Wheels and Tyres. Greater Brisbane, QLD.</div>
+  <div class="tagline">Fast. Professional. Always on the Move.</div>
+</footer>
